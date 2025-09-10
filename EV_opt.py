@@ -9,7 +9,7 @@ from pyomo.opt import SolverFactory
 import pandas as pd
 
 # ---------- Load data with pandas ----------
-cf_df  = pd.read_csv('Data/2024 Analysis/wind_solar_cf.csv').rename(columns=str.strip)
+cf_df  = pd.read_csv('Data/wind_solar_cf.csv').rename(columns=str.strip)
 
 ## constants and assumptions
 # capital costs for solar, and energy storage systems
@@ -48,7 +48,7 @@ model.EV_e_cap = Param(within=NonNegativeReals, mutable=True)
 ###
 
 # load data into parameters, solar and wind data are houlry capacity factor data
-path = 'Data/2024 Analysis/'
+path = 'Data/'
 data = DataPortal()
 data.load(filename = path + 'wind_solar_cf.csv', select = ('t', 'solar'), param = model.solar, index = model.t)
 data.load(filename = path + 'wind_solar_cf.csv', select = ('t', 'wind'), param = model.wind, index = model.t)

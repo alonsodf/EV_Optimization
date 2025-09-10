@@ -1,0 +1,34 @@
+# EV Optimization Configuration Template
+# Copy this file to local_config.yaml and customize as needed
+
+# Data settings
+data:
+  raw_data_path: "data/raw"
+  processed_data_path: "data/processed" 
+  external_data_path: "data/external"
+
+# Algorithm settings
+algorithms:
+  battery_optimization:
+    max_iterations: 1000
+    tolerance: 1e-6
+  
+  route_optimization:
+    max_distance: 500  # km
+    charging_time_limit: 60  # minutes
+
+# Visualization settings
+visualization:
+  figure_size: [10, 6]
+  dpi: 300
+  style: "seaborn"
+
+# Computational settings
+computation:
+  n_cores: -1  # Use all available cores
+  memory_limit: "8GB"
+  
+# External API settings (add your keys to local_config.yaml)
+# apis:
+#   weather_api_key: "your_key_here"
+#   maps_api_key: "your_key_here"

@@ -7,6 +7,8 @@ from __future__ import division
 from pyomo.environ import *
 from pyomo.opt import SolverFactory
 import pandas as pd
+import os
+from datetime import datetime
 
 # ---------- Load data with pandas ----------
 cf_df  = pd.read_csv('Data/wind_solar_cf.csv').rename(columns=str.strip)
@@ -163,4 +165,13 @@ annuals = {
 }
 print(annuals)
 
-out.to_csv("EV_opt_results.csv", index=False)
+# Generate a unique identifier, e.g., date-time string
+identifier = datetime.now().strftime("%Y%m%d_%H%M%S")
+
+# Construct the output file path
+out_file = os.path.join(results_dir, f"ev_opt_results_{identifier}.csv")
+
+# Save to the output file
+out.to_csv(out_file, index=False)
+
+print(f"Results saved to {out_file}")

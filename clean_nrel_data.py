@@ -18,17 +18,18 @@ county_region_map = pd.read_csv("Data/ercot_county_region_map.csv")
 
 base_folder = "Data/nrel_tempo_raw"
 folders = ["efs", "evs_2035", "ref"]
-
 output_folder = "Data/nrel_tempo_ercot"
 
 for folder in folders:
     folder_path = os.path.join(base_folder, folder)
+    output_folder_path = os.path.join(output_folder, folder)
+    os.makedirs(output_folder_path, exist_ok=True)  # Ensure output subfolder exists
+
     for file_name in os.listdir(folder_path):
         file_path = os.path.join(folder_path, file_name)
         if file_name.endswith(".parquet"):
             print(f"Processing file: {file_path}")
-        df = pd.read_parquet(file_path)
-
+            df = pd.read_parquet(file_path)
         # Sort by time_est to ensure correct order
         df = df.sort_values(['time_est', 'county'], ascending=[True, True]).reset_index(drop=True)
 
@@ -55,4 +56,5 @@ for folder in folders:
 
       
         # Save tt DataFrame with t column to tt same file
-        merged.to_parquet(file_path, index=False)
+        output_file_path = os.path.join(output_folder_path, file_name)
+        merged.to_parquet(output_file_path, index=False)

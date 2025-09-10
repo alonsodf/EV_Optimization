@@ -31,4 +31,4 @@ df['driving_loss'] = df['hour'].apply(get_driving_loss)
 cols_to_drop = ['month', 'day', 'hour']
 df.drop(columns=[col for col in cols_to_drop if col in df.columns], inplace=True)
 
-df.to_csv('ev_schedule.csv', index=False)
+df.to_csv('Data/ev_schedule.csv', index=False)

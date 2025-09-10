@@ -205,3 +205,49 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Project-specific data and results
+# Large data files (use Git LFS for files > 10MB)
+*.h5
+*.hdf5
+*.parquet
+data/processed/*.csv
+data/processed/*.xlsx
+data/raw/*.csv
+data/raw/*.xlsx
+
+# Result files that are too large
+results/*.h5
+results/*.hdf5
+results/large_results/
+
+# Temporary files
+tmp/
+temp/
+.tmp/
+
+# Configuration files with sensitive info
+config/local_config.yaml
+config/secrets.yaml
+.env.local
+
+# Generated documentation
+docs/_build/
+docs/build/
+
+# IDE specific files
+.vscode/settings.json
+.idea/workspace.xml
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# Log files
+*.log
+logs/

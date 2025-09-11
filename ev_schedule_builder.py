@@ -11,7 +11,7 @@ def get_ev_avail(hour):
 
 # Define SOC requirement schedule by hour
 def get_soc_req(hour):
-    if hour < 8:
+    if hour == 8:
         return 0.8
     else:
         return 0
